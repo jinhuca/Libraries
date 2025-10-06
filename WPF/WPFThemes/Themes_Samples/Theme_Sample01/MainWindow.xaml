@@ -1,0 +1,301 @@
+﻿<Window x:Class="WPFTheme_Demo01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:theme="http://jinhu.visualization.net/WPF_Themes/1.1"
+        xmlns:local="clr-namespace:WPFTheme_Demo01"
+        theme:ThemeManager.Theme="Charcoal"
+        x:Name="win" WindowState="Maximized"
+        Title="MainWindow" Height="820" Width="925"
+        xmlns:my="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon">
+  <Window.Resources>
+    <local:MyDataSource x:Key="ods"/>
+    <XmlDataProvider x:Key="myCompany" XPath="Company/Employee">
+      <x:XData>
+        <Company xmlns="">
+          <Employee Name="Don Hall">
+            <Employee Name="Alice Ciccu">
+              <Employee Name="David Pelton">
+                <Employee Name="Vivian Atlas"/>
+              </Employee>
+              <Employee Name="Jeff Price"/>
+              <Employee Name="Andy Jacobs"/>
+            </Employee>
+            <Employee Name="Bill Malone">
+              <Employee Name="Maurice Taylor"/>
+              <Employee Name="Sunil Uppal"/>
+              <Employee Name="Bill Gates"/>
+              <Employee Name="Qiang Wang"/>
+            </Employee>
+          </Employee>
+        </Company>
+      </x:XData>
+    </XmlDataProvider>
+
+    <HierarchicalDataTemplate x:Key="EmployeeTemplate" 
+                              ItemsSource="{Binding XPath=Employee}">
+      <TextBlock Text="{Binding XPath=@Name}"/>
+    </HierarchicalDataTemplate>
+
+  </Window.Resources>
+  <DockPanel LastChildFill="True">
+    <Menu DockPanel.Dock="Top">
+      <MenuItem Header="File" AllowDrop="True">
+        <MenuItem Header="Open" />
+        <MenuItem Header="Save"/>
+        <Separator HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <MenuItem Header="Exit"/>
+      </MenuItem>
+      <MenuItem Header="Skins">
+        <MenuItem Header="Charcoal" Click="themeMenu_SubmenuClosed"/>
+        <MenuItem Header="Pearl" Click="themeMenu_SubmenuClosed"/>
+      </MenuItem>
+    </Menu>
+    <StatusBar DockPanel.Dock="Bottom" Height="20">
+      <StatusBarItem>Status 1</StatusBarItem>
+    </StatusBar>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="2*"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="2*"/>
+      </Grid.ColumnDefinitions>
+      <StackPanel Grid.Column="0">
+        <TextBlock Text="TreeView Sample" Margin="3" Foreground="Green"/>
+        <TreeView Name="myTreeViewEvent" TreeViewItem.Selected="myTreeViewEvent_Selected"
+                  ItemsSource="{Binding Source={StaticResource myCompany}}"
+                  ItemTemplate="{StaticResource EmployeeTemplate}">
+        </TreeView>
+
+        <TextBlock Text="Button Sample" Margin="3" Foreground="Yellow"/>
+        <StackPanel Orientation="Horizontal" Background="Transparent">
+          <Button x:Name="btn1" Click="btn1_Click">
+            <Binding Path="Name" Source="{StaticResource ods}" 
+                     NotifyOnValidationError="True" ValidatesOnDataErrors="True" Mode="TwoWay">
+              <Binding.ValidationRules>
+                <local:AgeRangeRule/>
+              </Binding.ValidationRules>
+            </Binding>
+          </Button>
+          <Button Width="70" Height="20" Margin="3,3,10,3" IsEnabled="False">Disabled Button</Button>
+          <Button Margin="3,3,10,3" Click="Button_Click" BorderBrush="Red"
+                  Background="Transparent">Button</Button>
+          <Button Width="70" Height="20" Margin="3,3,10,3" Click="Button_Click">Button</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <RepeatButton x:Name="rpt1">
+            <Binding Path="Name" Source="{StaticResource ods}" 
+                     NotifyOnValidationError="True" ValidatesOnDataErrors="True" Mode="TwoWay">
+              <Binding.ValidationRules>
+                <local:AgeRangeRule/>
+              </Binding.ValidationRules>
+            </Binding>
+          </RepeatButton>
+          <RepeatButton>Repeat Button 2</RepeatButton>
+          <RepeatButton IsEnabled="False">Repeat Button 3</RepeatButton>
+        </StackPanel>
+        <GroupBox Header="RadioButton Group" Margin="3">
+          <StackPanel>
+            <RadioButton IsEnabled="False">RadioButton1</RadioButton>
+            <RadioButton>RadioButton2</RadioButton>
+            <RadioButton Name="rdbtn">
+              <Binding Path="Name" Source="{StaticResource ods}"
+                       NotifyOnValidationError="True" ValidatesOnDataErrors="True"
+                       Mode="TwoWay">
+                <Binding.ValidationRules>
+                  <local:AgeRangeRule/>
+                </Binding.ValidationRules>
+              </Binding>
+            </RadioButton>
+          </StackPanel>
+        </GroupBox>
+        <GroupBox Header="CheckBox Group" Margin="3">
+          <StackPanel>
+            <CheckBox Name="chkbox">
+              <Binding Path="Name" Source="{StaticResource ods}"
+                       NotifyOnValidationError="True" ValidatesOnDataErrors="True"
+                       Mode="TwoWay">
+                <Binding.ValidationRules>
+                  <local:AgeRangeRule/>
+                </Binding.ValidationRules>
+              </Binding>
+            </CheckBox>
+            <CheckBox IsEnabled="False">Disabled CheckBox</CheckBox>
+            <CheckBox>TwoState CheckBox</CheckBox>
+            <CheckBox IsThreeState="True">ThreeState CheckBox</CheckBox>
+          </StackPanel>
+        </GroupBox>
+        <TextBlock Text="ComboBox" Margin="3" Foreground="Yellow"/>
+        <ComboBox Margin="3" SelectedIndex="2">
+          <ComboBoxItem>Item 1</ComboBoxItem>
+          <ComboBoxItem>Item 2</ComboBoxItem>
+          <ComboBoxItem>Item 3</ComboBoxItem>
+        </ComboBox>
+        <TextBlock Text="TabControl Sample" Margin="3" Foreground="Yellow"/>
+        <TabControl Margin="3">
+          <TabItem Header="TabItem 1">
+            <ListBox>
+              <TextBlock Text="Item 1"/>
+              <TextBlock Text="Item 2"/>
+              <TextBlock Text="Item 3"/>
+            </ListBox>
+          </TabItem>
+          <TabItem Header="TabItem 2" IsEnabled="False">
+            <ListBox>
+              <TextBlock Text="Item 4"/>
+              <TextBlock Text="Item 5"/>
+              <TextBlock Text="Item 6"/>
+            </ListBox>
+          </TabItem>
+        </TabControl>
+        <TextBlock Text="ToggleButton Sample" Margin="3" Foreground="Yellow"/>
+        <StackPanel Orientation="Horizontal">
+          <ToggleButton Margin="3,3,10,3" Padding="6,0" IsEnabled="False">ToggleButton 1</ToggleButton>
+          <ToggleButton Margin="3,3,10,3" Padding="6,0">ToggleButton 2</ToggleButton>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <RepeatButton Margin="3,3,10,3" Padding="6,0">RepeatButton 1</RepeatButton>
+          <RepeatButton Margin="3,3,10,3" Padding="6,0" IsEnabled="False">RepeatButton 2</RepeatButton>
+        </StackPanel>
+        <TextBlock Text="PasswordBox Sample" Margin="3" Foreground="Yellow"/>
+        <PasswordBox Height="20"/>
+        <TextBlock Text="Disable TextBox Sample" Margin="3" Foreground="Yellow"/>
+        <TextBox Height="25" IsEnabled="False"/>
+        <TextBlock Text="Active TextBox Sample" Margin="3" Foreground="Yellow"/>
+        <TextBox Height="25"/>
+      </StackPanel>
+      <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
+      
+      <StackPanel Grid.Column="2">
+        <TextBlock Text="DataGrid Sample" Margin="3" Foreground="Yellow"/>
+
+        <DataGrid x:Name="dataGrid" Height="100" Margin="5">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Product" Binding="{Binding Path=ModelName}"/>
+          </DataGrid.Columns>
+        </DataGrid>
+        
+        <!--<TextBlock Text="ListBox Sample" Margin="3" Foreground="Yellow"/>
+        <ListBox x:Name="lstBox" Height="100" Margin="5"/>-->
+        <TextBlock Text="ListView Sample" Margin="3" Foreground="Yellow"/>
+
+        <ListView x:Name="lstView" Height="400" Margin="5" Background="Black">
+          <ListView.Resources>
+            <Style TargetType="TextBlock" x:Key="HeaderTextBlockStyle">
+              <Setter Property="FontSize" Value="21"/>
+              <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+            <Style TargetType="TextBlock" x:Key="CellTextBlockStyle">
+              <Setter Property="FontSize" Value="20"/>
+              <Setter Property="FontWeight" Value="Light"/>
+            </Style>
+          </ListView.Resources>
+
+          <ListView.View>
+            <GridView>
+              <GridView.Columns>
+
+                <GridViewColumn>
+                  <GridViewColumn.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="Name" Style="{StaticResource HeaderTextBlockStyle}"/>
+                   </DataTemplate>
+                  </GridViewColumn.HeaderTemplate>
+                  <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                      <TextBlock Text="{Binding Path=ModelName}" Style="{StaticResource CellTextBlockStyle}"/>
+                    </DataTemplate>
+                  </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+
+                <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Path=ModelNumber}">
+                  <GridViewColumn.HeaderTemplate>
+                    <DataTemplate>
+                      <TextBlock Text="Number" Style="{StaticResource HeaderTextBlockStyle}"/>
+                    </DataTemplate>
+
+                  </GridViewColumn.HeaderTemplate>
+                </GridViewColumn>
+
+                <GridViewColumn>
+                  <GridViewColumn.HeaderTemplate>
+                    <DataTemplate>
+                      <TextBlock Text="Price" Style="{StaticResource HeaderTextBlockStyle}"/>
+                    </DataTemplate>
+                  </GridViewColumn.HeaderTemplate>
+                  <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                      <TextBlock Text="{Binding Path=UnitCost, StringFormat={}{0:C}}"
+                                 Style="{StaticResource CellTextBlockStyle}"/>
+                    </DataTemplate>
+                  </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+
+                <GridViewColumn>
+                  <GridViewColumn.HeaderTemplate>
+                    <DataTemplate>
+                      <CheckBox Width="30" Height="30" VerticalAlignment="Bottom"/>
+                    </DataTemplate>
+                  </GridViewColumn.HeaderTemplate>
+                  <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                      <CheckBox/>
+                    </DataTemplate>
+                  </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+              </GridView.Columns>
+            </GridView>
+          </ListView.View>
+        </ListView>
+
+        <!--<ProgressBar Minimum="0" Maximum="200" IsIndeterminate="True" Height="12"/>
+        <ProgressBar Minimum="0" Maximum="200" Value="{Binding ElementName=slider, Path=Value}" Height="12"/>
+        <Slider x:Name="slider" Minimum="0" Maximum="200" Value="55" 
+                TickPlacement="Both" 
+                Ticks="0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200"/>-->
+      </StackPanel>
+      <GridSplitter Grid.Column="3" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
+      <StackPanel Grid.Column="4">
+        <StackPanel.Resources>
+          <Style x:Key="styleCalendar" TargetType="{x:Type Calendar}">
+            <Setter Property="Template">
+              <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Calendar}">
+                  <!-- Wrapping in ViewBox will enlarge calendar of that size.-->
+                  <Viewbox Height="400"
+                           Width="400">
+                    <CalendarItem x:Name="PART_CalendarItem"
+                                  Background="{TemplateBinding Background}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"/>
+                  </Viewbox>
+                </ControlTemplate>
+              </Setter.Value>
+            </Setter>
+          </Style>
+        </StackPanel.Resources>
+        <Expander Header="Expander 1">
+          <StackPanel>
+            <TextBlock IsEnabled="False">TextBlock1</TextBlock>
+            <Button>Button1</Button>
+            <TextBlock>TextBlock1</TextBlock>
+            <Button>Button1</Button>
+            <TextBlock>TextBlock1</TextBlock>
+            <Button>Button1</Button>
+          </StackPanel>
+        </Expander>
+        <Viewbox Width="500" Height="500">
+          <Calendar Margin="2"/>
+        </Viewbox>
+        
+        <!--<ComboBox SelectedIndex="0">
+          <ComboBoxItem>Item1</ComboBoxItem>
+          <TextBlock>Textbloxk</TextBlock>
+        </ComboBox>-->
+        <DatePicker Margin="20" CalendarStyle="{StaticResource styleCalendar}"/>
+      </StackPanel>
+    </Grid>
+  </DockPanel>
+</Window>

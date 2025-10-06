@@ -1,0 +1,292 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:is="http://schemas.microsoft.com/expression/2010/interactions"
+                    xmlns:local="clr-namespace:JinHu.WPF.Themes"
+                    mc:Ignorable="d">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Shared.xaml"/>
+  </ResourceDictionary.MergedDictionaries>
+
+  <local:ExpanderMultiplyConverter x:Key="multiplyConverter"/>
+
+  <ControlTemplate x:Key="ExpanderHeaderFocusVisualTemplate">
+    <Border>
+      <Rectangle Margin="0" 
+                 SnapsToDevicePixels="true" 
+                 Stroke="White" 
+                 StrokeThickness="1" 
+                 StrokeDashArray="1 2"/>
+    </Border>
+  </ControlTemplate>
+
+  <Style x:Key="ExpanderHeaderFocusVisual" TargetType="{x:Type ToggleButton}">
+    <Setter Property="Control.Template" Value="{StaticResource ExpanderHeaderFocusVisualTemplate}"/>
+  </Style>
+
+  <ControlTemplate x:Key="ExpanderRightHeaderToggleButtonTemplate" TargetType="{x:Type ToggleButton}">
+    <Border x:Name="HeadBorder" Padding="{TemplateBinding Padding}">
+      <Grid SnapsToDevicePixels="False" Background="Transparent">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="15"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+          <Grid.LayoutTransform>
+            <TransformGroup>
+              <TransformGroup.Children>
+                <TransformCollection>
+                  <RotateTransform Angle="-90"/>
+                </TransformCollection>
+              </TransformGroup.Children>
+            </TransformGroup>
+          </Grid.LayoutTransform>
+          <Ellipse Fill="{StaticResource Brush_Background_Normal}" 
+                         Stroke="DarkGray" HorizontalAlignment="Center" 
+                         x:Name="circle" VerticalAlignment="Center" Width="15" Height="15"/>
+          <Path Stroke="#666" StrokeThickness="2" HorizontalAlignment="Center" x:Name="arrow" VerticalAlignment="Center" SnapsToDevicePixels="false" Data="M 1,1.5 L 4.5,5 L 8,1.5"/>
+        </Grid>
+        <ContentPresenter HorizontalAlignment="Center" Margin="0,4,0,0" VerticalAlignment="Top" SnapsToDevicePixels="True" Grid.Row="1" RecognizesAccessKey="True"/>
+      </Grid>
+    </Border>
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsChecked" Value="true">
+        <Setter Property="Data" TargetName="arrow" Value="M 1,4.5  L 4.5,1  L 8,4.5"/>
+      </Trigger>
+      <Trigger Property="IsMouseOver" Value="true">
+        <Setter Property="Stroke" TargetName="circle" Value="#FF3C7FB1"/>
+        <Setter Property="Fill" TargetName="circle" Value="{StaticResource Brush_Background_MouseOver}"/>
+        <Setter Property="Stroke" TargetName="arrow" Value="#222"/>
+        <Setter Property="Background" TargetName="HeadBorder" Value="{StaticResource Brush_Background_MouseOver}"/>
+      </Trigger>
+      <Trigger Property="IsPressed" Value="true">
+        <Setter Property="Stroke" TargetName="circle" Value="#FF526C7B"/>
+        <Setter Property="StrokeThickness" TargetName="circle" Value="1.5"/>
+        <Setter Property="Fill" TargetName="circle" Value="{StaticResource Brush_Background_Pressed}"/>
+        <Setter Property="Stroke" TargetName="arrow" Value="#FF003366"/>
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+
+  <Style x:Key="ExpanderRightHeaderStyle" TargetType="{x:Type ToggleButton}">
+    <Setter Property="Template" Value="{StaticResource ExpanderRightHeaderToggleButtonTemplate}"/>
+  </Style>
+
+  <ControlTemplate x:Key="ExpanderUpHeaderToggleButtonTemplate" TargetType="{x:Type ToggleButton}">
+    <Border x:Name="HeadBorder" Padding="{TemplateBinding Padding}">
+      <Grid SnapsToDevicePixels="False" Background="Transparent">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="15"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+          <Grid.LayoutTransform>
+            <TransformGroup>
+              <TransformGroup.Children>
+                <TransformCollection>
+                  <RotateTransform Angle="180"/>
+                </TransformCollection>
+              </TransformGroup.Children>
+            </TransformGroup>
+          </Grid.LayoutTransform>
+          <Ellipse Fill="{StaticResource Brush_Background_Normal}" Stroke="DarkGray" 
+                         HorizontalAlignment="Center" x:Name="circle" VerticalAlignment="Center" 
+                         Width="15" Height="15"/>
+          <Path x:Name="arrow" Stroke="#666" StrokeThickness="2" HorizontalAlignment="Center" 
+                VerticalAlignment="Center" SnapsToDevicePixels="false" Data="M 1,1.5 L 4.5,5 L 8,1.5"/>
+        </Grid>
+        <ContentPresenter HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" SnapsToDevicePixels="True" Grid.Column="1" RecognizesAccessKey="True"/>
+      </Grid>
+    </Border>
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsChecked" Value="true">
+        <Setter Property="Data" TargetName="arrow" Value="M 1,4.5  L 4.5,1  L 8,4.5"/>
+      </Trigger>
+      <Trigger Property="IsMouseOver" Value="true">
+        <Setter Property="Stroke" TargetName="circle" Value="#FF3C7FB1"/>
+        <Setter Property="Fill" TargetName="circle" Value="{StaticResource Brush_Background_MouseOver}"/>
+        <Setter Property="Stroke" TargetName="arrow" Value="#222"/>
+        <Setter Property="Background" TargetName="HeadBorder" Value="{StaticResource Brush_Background_MouseOver}"/>
+      </Trigger>
+      <Trigger Property="IsPressed" Value="true">
+        <Setter Property="Stroke" TargetName="circle" Value="#FF526C7B"/>
+        <Setter Property="Stroke" TargetName="arrow" Value="#FF003366"/>
+        <Setter Property="StrokeThickness" TargetName="circle" Value="1.5"/>
+        <Setter Property="Fill" TargetName="circle" Value="{StaticResource Brush_Background_Pressed}"/>
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+
+  <Style x:Key="ExpanderUpHeaderStyle" TargetType="{x:Type ToggleButton}">
+    <Setter Property="Template" Value="{StaticResource ExpanderUpHeaderToggleButtonTemplate}"/>
+  </Style>
+
+  <ControlTemplate x:Key="ExpanderLeftHeaderToggleButtonTemplate" TargetType="{x:Type ToggleButton}">
+    <Border x:Name="HeadBorder" Padding="{TemplateBinding Padding}">
+      <Grid SnapsToDevicePixels="False" Background="Transparent">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="15"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+          <Grid.LayoutTransform>
+            <TransformGroup>
+              <TransformGroup.Children>
+                <TransformCollection>
+                  <RotateTransform Angle="90"/>
+                </TransformCollection>
+              </TransformGroup.Children>
+            </TransformGroup>
+          </Grid.LayoutTransform>
+
+          <Ellipse Fill="{StaticResource Brush_Background_Normal}" Stroke="DarkGray" 
+                         HorizontalAlignment="Center" x:Name="circle" 
+                         VerticalAlignment="Center" Width="15" Height="15"/>
+          <Path Stroke="#666" StrokeThickness="2" HorizontalAlignment="Center" 
+                      x:Name="arrow" VerticalAlignment="Center" SnapsToDevicePixels="false"
+                      Data="M 1,1.5 L 4.5,5 L 8,1.5"/>
+        </Grid>
+        <ContentPresenter HorizontalAlignment="Center" Margin="0,4,0,0" VerticalAlignment="Top" SnapsToDevicePixels="True" Grid.Row="1" RecognizesAccessKey="True"/>
+      </Grid>
+    </Border>
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsChecked" Value="true">
+        <Setter Property="Data" TargetName="arrow" Value="M 1,4.5  L 4.5,1  L 8,4.5"/>
+      </Trigger>
+      <Trigger Property="IsMouseOver" Value="true">
+        <Setter Property="Stroke" TargetName="circle" Value="#FF3C7FB1"/>
+        <Setter Property="Fill" TargetName="circle" Value="{StaticResource Brush_Background_MouseOver}"/>
+        <Setter Property="Stroke" TargetName="arrow" Value="#222"/>
+        <Setter Property="Background" TargetName="HeadBorder" Value="{StaticResource Brush_Background_Normal}"/>
+      </Trigger>
+      <Trigger Property="IsPressed" Value="true">
+        <Setter Property="Stroke" TargetName="circle" Value="#FF526C7B"/>
+        <Setter Property="StrokeThickness" TargetName="circle" Value="1.5"/>
+        <Setter Property="Fill" TargetName="circle" Value="{StaticResource Brush_Background_Pressed}"/>
+        <Setter Property="Stroke" TargetName="arrow" Value="#FF003366"/>
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+
+  <Style x:Key="ExpanderLeftHeaderStyle" TargetType="{x:Type ToggleButton}">
+    <Setter Property="Template" Value="{StaticResource ExpanderLeftHeaderToggleButtonTemplate}"/>
+  </Style>
+
+  <ControlTemplate x:Key="ExpanderDownHeaderToggleButtonTemplate" TargetType="{x:Type ToggleButton}">
+    <ControlTemplate.Resources>
+      <Storyboard x:Key="HoverOn">
+        <ColorAnimation BeginTime="00:00:00"
+                        Storyboard.TargetName="CircleStroke"
+                        Storyboard.TargetProperty="Color"
+                        Duration="0:0:0.1"
+                        To="{StaticResource Color_Border_MouseOver}"/>
+        <ColorAnimation BeginTime="00:00:00"
+                        Storyboard.TargetName="ArrowStroke"
+                        Storyboard.TargetProperty="Color"
+                        Duration="0:0:0.1"
+                        To="{StaticResource Color_Foreground_MouseOver}"/>
+      </Storyboard>
+      <Storyboard x:Key="PressOn">
+        <ColorAnimation BeginTime="00:00:00"
+                        Storyboard.TargetName="CircleStroke"
+                        Storyboard.TargetProperty="Color"
+                        Duration="00:00:00.01"
+                        To="{StaticResource Color_Border_Pressed}">
+        </ColorAnimation>
+      </Storyboard>
+      <Storyboard x:Key="PressOff">
+        <ColorAnimation BeginTime="00:00:00"
+                        Storyboard.TargetName="CircleStroke"
+                        Storyboard.TargetProperty="Color"
+                        Duration="00:00:00.01"
+                        To="{StaticResource Color_Border_Normal}">
+        </ColorAnimation>
+      </Storyboard>
+      <Storyboard x:Key="CheckOn">
+        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetName="arrow"
+                                       Storyboard.TargetProperty="Data">
+          <DiscreteObjectKeyFrame KeyTime="00:00:00.01">
+            <DiscreteObjectKeyFrame.Value>
+              <Geometry>M 1,4.5  L 4.5,1  L 8,4.5</Geometry>
+            </DiscreteObjectKeyFrame.Value>
+          </DiscreteObjectKeyFrame>
+        </ObjectAnimationUsingKeyFrames>
+      </Storyboard>
+      <Storyboard x:Key="CheckOff">
+        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                       Storyboard.TargetName="arrow"
+                                       Storyboard.TargetProperty="Data">
+          <DiscreteObjectKeyFrame KeyTime="00:00:00.01">
+            <DiscreteObjectKeyFrame.Value>
+              <Geometry>M 1,1.5 L 4.5,5 L 8,1.5</Geometry>
+            </DiscreteObjectKeyFrame.Value>
+          </DiscreteObjectKeyFrame>
+        </ObjectAnimationUsingKeyFrames>
+      </Storyboard>
+    </ControlTemplate.Resources>
+
+    <Border x:Name="HeadBorder" Padding="{TemplateBinding Padding}">
+      <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="CommonStates">
+          <VisualState x:Name="Normal"/>
+          <VisualState x:Name="MouseOver" Storyboard="{StaticResource HoverOn}"/>
+          <VisualState x:Name="Pressed" Storyboard="{StaticResource PressOn}"/>
+          <VisualState x:Name="Disabled"/>
+        </VisualStateGroup>
+        <VisualStateGroup x:Name="CheckStates">
+          <VisualState x:Name="Checked" Storyboard="{StaticResource CheckOn}"/>
+          <VisualState x:Name="Unchecked" Storyboard="{StaticResource CheckOff}"/>
+          <VisualState x:Name="Indeterminate"/>
+        </VisualStateGroup>
+        <VisualStateGroup x:Name="FocusStates">
+          <VisualState x:Name="Focused"/>
+          <VisualState x:Name="Unfocused"/>
+        </VisualStateGroup>
+        <VisualStateGroup x:Name="ValidationStates">
+          <VisualState x:Name="Valid"/>
+          <VisualState x:Name="InvalidFocused"/>
+          <VisualState x:Name="InvalidUnfocused"/>
+        </VisualStateGroup>
+      </VisualStateManager.VisualStateGroups>
+
+      <Grid SnapsToDevicePixels="False" Background="Transparent">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="15"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Ellipse x:Name="backCircle" HorizontalAlignment="Center" VerticalAlignment="Center"
+                 Width="15" Height="15">
+          <Ellipse.Fill>
+            <SolidColorBrush x:Name="CircleFill" Color="{StaticResource Color_Background_Normal}"/>
+          </Ellipse.Fill>
+          <Ellipse.Stroke>
+            <SolidColorBrush x:Name="CircleStroke" Color="{StaticResource Color_Foreground_Normal}"/>
+          </Ellipse.Stroke>
+        </Ellipse>
+
+        <Path x:Name="arrow" 
+              HorizontalAlignment="Center" 
+              VerticalAlignment="Center" 
+              StrokeThickness="2" 
+              SnapsToDevicePixels="false"
+              Data="M 1,1.5 L 4.5,5 L 8,1.5">
+          <Path.Stroke>
+            <SolidColorBrush x:Name="ArrowStroke" Color="{StaticResource Color_Foreground_Normal}"/>
+          </Path.Stroke>
+        </Path>
+        <ContentPresenter x:Name="ContentPresenter"
+                          SnapsToDevicePixels="True"
+                          HorizontalAlignment="Left" 
+                          VerticalAlignment="Center" 
+                          Margin="4,0,0,0"
+                          Grid.Column="1"
+                          RecognizesAccessKey="True"/>
+      </Grid>
+    </Border>
+
+  </ControlTemplate>
+</ResourceDictionary>

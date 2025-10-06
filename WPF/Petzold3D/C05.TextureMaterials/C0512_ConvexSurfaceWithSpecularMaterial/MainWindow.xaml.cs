@@ -1,0 +1,10 @@
+﻿namespace C0512_ConvexSurfaceWithSpecularMaterial
+{
+  public partial class MainWindow
+  {
+    public MainWindow()
+    {
+      InitializeComponent();
+    }
+  }
+}

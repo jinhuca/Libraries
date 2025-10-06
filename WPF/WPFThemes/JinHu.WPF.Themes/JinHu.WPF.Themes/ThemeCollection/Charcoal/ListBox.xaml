@@ -1,0 +1,42 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Shared.xaml"/>
+  </ResourceDictionary.MergedDictionaries>
+
+  <ControlTemplate x:Key="ListBoxTemplate" TargetType="{x:Type ListBox}">
+    <Grid>
+      <Border x:Name="Border" 
+              BorderBrush="{TemplateBinding BorderBrush}"
+              BorderThickness="{TemplateBinding BorderThickness}" 
+              Background="{StaticResource Brush_Background_Normal}"/>
+      <ScrollViewer Margin="1" 
+                    Style="{DynamicResource ScrollViewer}" 
+                    Focusable="false" 
+                    Background="{x:Null}">
+        <StackPanel IsItemsHost="true"/>
+      </ScrollViewer>
+    </Grid>
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsEnabled" Value="false">
+        <Setter Property="Background" Value="{StaticResource Brush_Background_Disable}" TargetName="Border"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Brush_Border_Disable}" TargetName="Border"/>
+      </Trigger>
+      <Trigger Property="IsGrouping" Value="true">
+        <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  
+  <Style TargetType="{x:Type ListBox}">
+    <Setter Property="Template" Value="{StaticResource ListBoxTemplate}"/>
+    <Setter Property="SnapsToDevicePixels" Value="true"/>
+    <Setter Property="Background" Value="{StaticResource CntBackgroundBrush_Normal}"/>
+    <Setter Property="BorderBrush" Value="{StaticResource Brush_Border_Normal}"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="Foreground" Value="{StaticResource Brush_Foreground_Normal}"/>
+    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+    <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+  </Style>
+</ResourceDictionary>

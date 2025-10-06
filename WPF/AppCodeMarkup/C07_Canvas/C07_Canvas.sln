@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C0701PaintTheButton", "C0701PaintTheButton\C0701PaintTheButton.csproj", "{7636FED2-6A19-48AA-BDA8-682B77EC88FB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C0702PlayJeuDeTacquin", "C0702PlayJeuDeTacquin\C0702PlayJeuDeTacquin.csproj", "{2717AAAD-7F6A-4B0B-B814-08D85C3EEAB0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7636FED2-6A19-48AA-BDA8-682B77EC88FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7636FED2-6A19-48AA-BDA8-682B77EC88FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7636FED2-6A19-48AA-BDA8-682B77EC88FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7636FED2-6A19-48AA-BDA8-682B77EC88FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2717AAAD-7F6A-4B0B-B814-08D85C3EEAB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2717AAAD-7F6A-4B0B-B814-08D85C3EEAB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2717AAAD-7F6A-4B0B-B814-08D85C3EEAB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2717AAAD-7F6A-4B0B-B814-08D85C3EEAB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {101372FE-D796-4630-B2F9-FDC9E2EC0BE6}
+	EndGlobalSection
+EndGlobal

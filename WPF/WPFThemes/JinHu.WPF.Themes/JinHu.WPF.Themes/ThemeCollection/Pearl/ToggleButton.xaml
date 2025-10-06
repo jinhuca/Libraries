@@ -1,0 +1,194 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Shared.xaml"/>
+  </ResourceDictionary.MergedDictionaries>
+
+  <ControlTemplate x:Key="ToggleButtonTemplate" TargetType="ToggleButton">
+    <ControlTemplate.Resources>
+      <Storyboard x:Key="Hovering">
+        <ColorAnimation Storyboard.TargetName="rectangleBackgroundStroke"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Border_MouseOver}" 
+                        Duration="0"/>
+        <ColorAnimation Storyboard.TargetName="rectangleBackgroundFill"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Background_MouseOver}" 
+                        Duration="0"/>
+      </Storyboard>
+      
+      <Storyboard x:Key="Pressing">
+        <ColorAnimation Storyboard.TargetName="rectangleBackgroundStroke"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Border_Pressed}"
+                        Duration="0"/>
+        <ColorAnimation Storyboard.TargetName="rectangleBackgroundFill"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Background_Pressed}"
+                        Duration="0"/>
+      </Storyboard>
+
+      <Storyboard x:Key="Disabling">
+        <ColorAnimation Storyboard.TargetName="rectangleBackgroundStroke"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Border_Disable}"
+                        Duration="0"/>
+        <ColorAnimation Storyboard.TargetName="rectangleBackgroundFill"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Border_Disable}"
+                        Duration="0"/>
+      </Storyboard>
+
+      <Storyboard x:Key="Checking">
+        <DoubleAnimation Storyboard.TargetName="rectangleChecked"
+                         Storyboard.TargetProperty="Opacity"
+                         To="1" Duration="0"/>
+      </Storyboard>
+      <Storyboard x:Key="CheckingOff">
+        <DoubleAnimation Storyboard.TargetName="rectangleChecked"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0" Duration="0"/>
+      </Storyboard>
+     
+      <Storyboard x:Key="Focusing">
+        <DoubleAnimation Storyboard.TargetName="rectangleFocus"
+                         Storyboard.TargetProperty="Opacity"
+                         To="1" Duration="0"/>
+      </Storyboard>
+      <Storyboard x:Key="FocusingOff">
+        <DoubleAnimation Storyboard.TargetName="rectangleFocus"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0" Duration="0"/>
+      </Storyboard>
+
+      <Storyboard x:Key="Invaliding"></Storyboard>
+      
+      <Storyboard x:Key="InvalidingOff"></Storyboard>
+      
+    </ControlTemplate.Resources>
+
+    <Grid x:Name="grid">
+      <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="CommonStates">
+          <VisualState x:Name="Normal"/>
+          <VisualState x:Name="MouseOver" Storyboard="{StaticResource Hovering}"/>
+          <VisualState x:Name="Pressed" Storyboard="{StaticResource Pressing}"/>
+          <VisualState x:Name="Disabled" Storyboard="{StaticResource Disabling}"/>
+        </VisualStateGroup>
+        <VisualStateGroup x:Name="CheckStates">
+          <VisualState x:Name="Checked" Storyboard="{StaticResource Checking}"/>
+          <VisualState x:Name="Unchecked" Storyboard="{StaticResource CheckingOff}"/>
+          <VisualState x:Name="Indeterminate"/>
+        </VisualStateGroup>
+        <VisualStateGroup x:Name="FocusStates">
+          <VisualState x:Name="Focused" Storyboard="{StaticResource Focusing}"/>
+          <VisualState x:Name="Unfocused" Storyboard="{StaticResource FocusingOff}"/>
+        </VisualStateGroup>
+        <VisualStateGroup x:Name="ValidationStates">
+          <VisualState x:Name="Valid"/>
+          <VisualState x:Name="InvalidFocused"/>
+          <VisualState x:Name="InvalidUnfocused"/>
+        </VisualStateGroup>
+      </VisualStateManager.VisualStateGroups>
+      
+      <Rectangle x:Name="rectangleBackground" StrokeThickness="{TemplateBinding BorderThickness}"
+                 RadiusX="3" RadiusY="3" Opacity="1">
+        <Rectangle.Stroke>
+          <SolidColorBrush x:Name="rectangleBackgroundStroke" Color="{StaticResource Color_Border_Normal}"/>
+        </Rectangle.Stroke>
+        <Rectangle.Fill>
+          <SolidColorBrush x:Name="rectangleBackgroundFill" Color="{StaticResource Color_Background_Normal}"/>
+        </Rectangle.Fill>
+      </Rectangle>
+      
+      <Rectangle x:Name="rectangleChecked" RadiusX="3" RadiusY="3"
+                 Stroke="{StaticResource Brush_Border_Checked}"
+                 StrokeThickness="1"
+                 Fill="{StaticResource Brush_Background_Checked}"
+                 Opacity="0"/>
+
+      <Rectangle x:Name="rectangleFocus"
+                 Opacity="0"
+                 RadiusX="3" RadiusY="3"
+                 Stroke="{StaticResource Brush_Border_Focused}"
+                 StrokeThickness="1"
+                 Fill="{StaticResource Brush_Background_Focused}"/>
+      
+      <Rectangle x:Name="rectangleInvalid"
+                 Opacity="0"
+                 RadiusX="3" RadiusY="3"
+                 Stroke="{StaticResource Brush_Border_InvalidFocused}"
+                 StrokeThickness="1"
+                 Fill="{StaticResource Brush_Background_InvalidFocused}"/>
+      
+      <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                        RecognizesAccessKey="True" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" 
+                        Margin="4"/>
+    </Grid>
+
+    <ControlTemplate.Triggers>
+      <!--<Trigger Property="IsMouseOver" Value="True">
+        <Trigger.ExitActions>
+          <BeginStoryboard Storyboard="{StaticResource HoveringOff}" x:Name="HoverOff_BeginStoryboard"/>
+        </Trigger.ExitActions>
+        <Trigger.EnterActions>
+          <BeginStoryboard Storyboard="{StaticResource Hovering}"/>
+        </Trigger.EnterActions>
+      </Trigger>
+      <Trigger Property="IsPressed" Value="True">
+        <Trigger.ExitActions>
+          <BeginStoryboard Storyboard="{StaticResource PressedOff}" x:Name="PressedOff_BeginStoryboard"/>
+        </Trigger.ExitActions>
+        <Trigger.EnterActions>
+          <BeginStoryboard Storyboard="{StaticResource PressedOn}" x:Name="PressedOn_BeginStoryboard"/>
+        </Trigger.EnterActions>
+      </Trigger>
+      <Trigger Property="IsKeyboardFocused" Value="true"/>-->
+      
+      <Trigger Property="IsChecked" Value="true">
+        <Setter Property="Foreground" Value="{StaticResource Brush_Foreground_Checked}"/>
+      </Trigger>
+      <!--<Trigger Property="IsEnabled" Value="false">
+        <Setter Property="Foreground" Value="#ADADAD" />
+        <Setter Property="Background" TargetName="BackgroundBorder" Value="{DynamicResource DisabledBackgroundBrush}"/>
+        <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource DisabledBorderBrush}"/>
+        <Setter Property="Opacity" TargetName="BackgroundBorder" Value="0.5"/>
+      </Trigger>-->
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+
+  <Style x:Key="ButtonFocusVisual">
+    <Setter Property="Control.Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Rectangle SnapsToDevicePixels="true" 
+                     Margin="2" 
+                     Stroke="Black" 
+                     StrokeDashArray="1 2" 
+                     StrokeThickness="1"/>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style TargetType="{x:Type ToggleButton}">
+    <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+    <Setter Property="Background" Value="{StaticResource Brush_Background_Normal}"/>
+    <Setter Property="BorderBrush" Value="{StaticResource Brush_Border_Normal}"/>
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Foreground" Value="{StaticResource Brush_Foreground_Normal}" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <!--<Setter Property="Padding" Value="1"/>-->
+    <Setter Property="Template" Value="{StaticResource ToggleButtonTemplate}"/>
+    <Style.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Foreground" Value="{StaticResource Brush_Foreground_MouseOver}"/>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
+
+</ResourceDictionary>

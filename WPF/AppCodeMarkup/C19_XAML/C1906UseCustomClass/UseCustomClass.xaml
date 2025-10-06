@@ -1,0 +1,13 @@
+﻿<Window x:Class="C1906UseCustomClass.UseCustomClass"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:C1906UseCustomClass"
+        mc:Ignorable="d" Title="Use Custom Class" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize">
+  <StackPanel Orientation="Horizontal">
+    <Button HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24" Content="Do-nothing button to test tabbing"/>
+    <local:ColorGridBox HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24" SelectionChanged="ColorGridBoxOnSelectionChanged"/>
+    <Button HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24" Content="Do-nothing button to test tabbing"/>
+  </StackPanel>
+</Window>

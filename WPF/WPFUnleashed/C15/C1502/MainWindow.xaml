@@ -1,0 +1,39 @@
+﻿<Window x:Class="C1502.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:C1502"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+  <Grid>
+    <Image>
+      <Image.Source>
+        <DrawingImage>
+          <DrawingImage.Drawing>
+            <GeometryDrawing>
+              <GeometryDrawing.Pen>
+                <Pen Brush="Black"/>
+              </GeometryDrawing.Pen>
+              <GeometryDrawing.Brush>
+                <SolidColorBrush Color="Orange"/>
+              </GeometryDrawing.Brush>
+              <GeometryDrawing.Geometry>
+                <PathGeometry FillRule="Nonzero">
+                  <PathFigure IsClosed="True">
+                    <LineSegment Point="0,100" IsSmoothJoin="True"/>
+                    <LineSegment Point="100,100" IsSmoothJoin="True"/>
+                  </PathFigure>
+                  <PathFigure StartPoint="70,0" IsClosed="True">
+                    <LineSegment Point="0,100" IsSmoothJoin="True"/>
+                    <LineSegment Point="100,100" IsSmoothJoin="True"/>
+                  </PathFigure>
+                </PathGeometry>
+              </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+          </DrawingImage.Drawing>
+        </DrawingImage>
+      </Image.Source>
+    </Image>
+  </Grid>
+</Window>

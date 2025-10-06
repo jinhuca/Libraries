@@ -1,0 +1,33 @@
+﻿<Window x:Class="C14.AddTwoVectors2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:media2D="clr-namespace:Petzold.Media2D;assembly=Petzold.Media3D"
+        Title="Add Two Vectors (2)" Height="300" Width="300">
+  <Window.Resources>
+    <Style TargetType="media2D:ArrowPolyline">
+      <Setter Property="Stroke" Value="Black"/>
+      <Setter Property="Fill" Value="Black"/>
+      <Setter Property="StrokeStartLineCap" Value="Round"/>
+      <Setter Property="StrokeEndLineCap" Value="Round"/>
+      <Setter Property="StrokeLineJoin" Value="Round"/>
+      <Setter Property="ArrowAngle" Value="45"/>
+      <Setter Property="IsArrowClosed" Value="true"/>
+    </Style>
+  </Window.Resources>
+  <Canvas>
+    <media2D:ArrowPolyline Points="96 192, 144 96"/>
+    <TextBlock Canvas.Left="100" Canvas.Top="130" Text="V1"/>
+    <media2D:ArrowPolyline Points="144 96, 240 96"/>
+    <TextBlock Canvas.Left="180" Canvas.Top="80" Text="V2"/>
+    <media2D:ArrowPolyline Points="96 192, 240 96"/>
+    <TextBlock Canvas.Left="150" Canvas.Top="155" Text="V1 + V2">
+      <TextBlock.RenderTransform>
+        <RotateTransform Angle="-34"/>
+      </TextBlock.RenderTransform>
+    </TextBlock>
+    <media2D:ArrowPolyline Points="96 192, 192 192"/>
+    <TextBlock Canvas.Left="140" Canvas.Top="194" Text="V2"/>
+    <media2D:ArrowPolyline Points="192 192, 240 96"/>
+    <TextBlock Canvas.Left="220" Canvas.Top="145" Text="V1"/>
+  </Canvas>
+</Window>

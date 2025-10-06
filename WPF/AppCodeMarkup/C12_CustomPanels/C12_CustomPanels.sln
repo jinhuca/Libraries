@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1201DuplicateUniformGrid", "C1201DuplicateUniformGrid\C1201DuplicateUniformGrid.csproj", "{84CEBC1E-6256-498F-88D2-9395B0BFAFA6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1202PaintOnCanvasClone", "C1202PaintOnCanvasClone\C1202PaintOnCanvasClone.csproj", "{FC828D06-EB99-428C-A19A-788871CEF05A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1203DiagonalizeTheButtons", "C1203DiagonalizeTheButtons\C1203DiagonalizeTheButtons.csproj", "{B6A65739-1727-4817-A00A-24C4FCA7B1C2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1204CircleTheButtons", "C1204CircleTheButtons\C1204CircleTheButtons.csproj", "{CD1AD2A0-2768-4FD6-93CE-EFD3071ECC55}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84CEBC1E-6256-498F-88D2-9395B0BFAFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84CEBC1E-6256-498F-88D2-9395B0BFAFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84CEBC1E-6256-498F-88D2-9395B0BFAFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84CEBC1E-6256-498F-88D2-9395B0BFAFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC828D06-EB99-428C-A19A-788871CEF05A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC828D06-EB99-428C-A19A-788871CEF05A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC828D06-EB99-428C-A19A-788871CEF05A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC828D06-EB99-428C-A19A-788871CEF05A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6A65739-1727-4817-A00A-24C4FCA7B1C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6A65739-1727-4817-A00A-24C4FCA7B1C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6A65739-1727-4817-A00A-24C4FCA7B1C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6A65739-1727-4817-A00A-24C4FCA7B1C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD1AD2A0-2768-4FD6-93CE-EFD3071ECC55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD1AD2A0-2768-4FD6-93CE-EFD3071ECC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD1AD2A0-2768-4FD6-93CE-EFD3071ECC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD1AD2A0-2768-4FD6-93CE-EFD3071ECC55}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B94BAED-963E-4043-A64E-AABFBCEA08CE}
+	EndGlobalSection
+EndGlobal

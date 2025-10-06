@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\CopyHS.png" />
+    <None Remove="Images\CutHS.png" />
+    <None Remove="Images\DeleteHS.png" />
+    <None Remove="Images\NewDocumentHS.png" />
+    <None Remove="Images\openHS.png" />
+    <None Remove="Images\PasteHS.png" />
+    <None Remove="Images\PrintHS.png" />
+    <None Remove="Images\saveHS.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\CopyHS.png" />
+    <Resource Include="Images\CutHS.png" />
+    <Resource Include="Images\DeleteHS.png" />
+    <Resource Include="Images\NewDocumentHS.png" />
+    <Resource Include="Images\openHS.png" />
+    <Resource Include="Images\PasteHS.png" />
+    <Resource Include="Images\PrintHS.png" />
+    <Resource Include="Images\saveHS.png" />
+  </ItemGroup>
+
+</Project>

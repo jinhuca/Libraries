@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/JinHu.WPF.Themes/JinHu.WPF.Themes/bin/Debug
+/JinHu.WPF.Themes/JinHu.WPF.Themes/obj
+/StoreDatabase/bin/Debug
+/StoreDatabase/obj
+*.scc
+/Themes_Samples/Theme_Sample01/bin
+/Themes_Samples/Theme_Sample01/obj/x86
+/JinHu.WPF.Themes/.vs/JinHu.WPF.Themes/v17/.suo
+*.vsidx
+/JinHu.WPF.Themes/.vs/JinHu.WPF.Themes/FileContentIndex/4cbb7d20-4783-4e55-a527-24c21a1b6ce5.vsidx
+/JinHu.WPF.Themes/CalendarDemo/obj/Debug
+/JinHu.WPF.Themes/CalendarDemo/bin/Debug

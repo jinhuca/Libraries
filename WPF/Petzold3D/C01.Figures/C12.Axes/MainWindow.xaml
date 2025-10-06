@@ -1,0 +1,12 @@
+﻿<Window x:Class="C12.Axes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:media3D="clr-namespace:Petzold.Media3D;assembly=Petzold.Media3D"
+        Title="Axes" Height="450" Width="800">
+  <Viewport3D Width="3in" LayoutTransform="1 0 0 1 0 0">
+    <media3D:Axes Extent="2" ShowNumbers="false" Rounding="16"/>
+    <Viewport3D.Camera>
+      <OrthographicCamera Width="4" Position="-5 3 11" LookDirection="5 -3 -11"/>
+    </Viewport3D.Camera>
+  </Viewport3D>
+</Window>

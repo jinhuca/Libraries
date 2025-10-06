@@ -1,0 +1,164 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Shared.xaml"/>
+  </ResourceDictionary.MergedDictionaries>
+
+  <ControlTemplate x:Key="RepeatButtonControlTemplate" TargetType="{x:Type RepeatButton}">
+    <ControlTemplate.Resources>
+      <Storyboard x:Key="Hovering">
+        <DoubleAnimation Storyboard.TargetName="rectangleCommons"
+                         Storyboard.TargetProperty="Opacity"
+                         To="1" Duration="0"/>
+        <ColorAnimation Storyboard.TargetName="rectangleCommonsStroke"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Border_MouseOver}"
+                        Duration="0"/>
+        <ColorAnimation Storyboard.TargetName="rectangleCommonsFill"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Background_MouseOver}"
+                        Duration="0"/>
+      </Storyboard>
+      <Storyboard x:Key="Pressing">
+        <DoubleAnimation Storyboard.TargetName="rectangleCommons"
+                         Storyboard.TargetProperty="Opacity"
+                         To="1" Duration="0"/>
+        <ColorAnimation Storyboard.TargetName="rectangleCommonsStroke"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Border_Pressed}"
+                        Duration="0"/>
+        <ColorAnimation Storyboard.TargetName="rectangleCommonsFill"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Background_Pressed}"
+                        Duration="0"/>
+      </Storyboard>
+      <Storyboard x:Key="Disabling">
+        <DoubleAnimation Storyboard.TargetName="rectangleCommons"
+                         Storyboard.TargetProperty="Opacity"
+                         To="1" Duration="0"/>
+        <ColorAnimation Storyboard.TargetName="rectangleCommonsStroke"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Border_Disable}"
+                        Duration="0"/>
+        <ColorAnimation Storyboard.TargetName="rectangleCommonsFill"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Background_Disable}"
+                        Duration="0"/>
+      </Storyboard>
+      <Storyboard x:Key="Focusing">
+        <DoubleAnimation Storyboard.TargetName="rectangleFocus"
+                         Storyboard.TargetProperty="Opacity"
+                         To="1" Duration="0"/>
+      </Storyboard>
+      <Storyboard x:Key="FocusingOff">
+        <DoubleAnimation Storyboard.TargetName="rectangleFocus"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0" Duration="0:0:0.1"/>
+      </Storyboard>
+      <Storyboard x:Key="InvalidingFocused">
+        <DoubleAnimation Storyboard.TargetName="rectangleInvalid"
+                         Storyboard.TargetProperty="Opacity"
+                         To="1" Duration="0"/>
+        <DoubleAnimation Storyboard.TargetName="rectangleBackground"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0" Duration="0"/>
+      </Storyboard>
+      <Storyboard x:Key="InvalidingUnfocused">
+        <DoubleAnimation Storyboard.TargetName="rectangleInvalid"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0.5" Duration="0">
+        </DoubleAnimation>
+        <DoubleAnimation Storyboard.TargetName="rectangleBackground"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0" Duration="0"/>
+      </Storyboard>
+    </ControlTemplate.Resources>
+    <Grid>
+      <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="CommonStates">
+          <VisualState x:Name="Normal"/>
+          <VisualState x:Name="MouseOver" Storyboard="{StaticResource Hovering}"/>
+          <VisualState x:Name="Pressed" Storyboard="{StaticResource Pressing}"/>
+          <VisualState x:Name="Disabled" Storyboard="{StaticResource Disabling}"/>
+        </VisualStateGroup>
+        <VisualStateGroup x:Name="FocusStates">
+          <VisualState x:Name="Focused" Storyboard="{StaticResource Focusing}"/>
+          <VisualState x:Name="Unfocused" Storyboard="{StaticResource FocusingOff}"/>
+        </VisualStateGroup>
+        <VisualStateGroup x:Name="ValidationStates">
+          <VisualState x:Name="Valid"/>
+          <VisualState x:Name="InvalidFocused" Storyboard="{StaticResource InvalidingFocused}"/>
+          <VisualState x:Name="InvalidingUnfocused" Storyboard="{StaticResource InvalidingUnfocused}"/>
+        </VisualStateGroup>
+      </VisualStateManager.VisualStateGroups>
+      
+      <Rectangle x:Name="rectangleBackground"
+                 Opacity="1" RadiusX="3" RadiusY="3"
+                 StrokeThickness="{TemplateBinding BorderThickness}"
+                 Stroke="{TemplateBinding BorderBrush}"
+                 Fill="{TemplateBinding Background}"/>
+      
+      <Rectangle x:Name="rectangleCommons"
+                 Opacity="0" RadiusX="3" RadiusY="3"
+                 StrokeThickness="{TemplateBinding BorderThickness}">
+        <Rectangle.Stroke>
+          <SolidColorBrush x:Name="rectangleCommonsStroke" Color="{StaticResource Color_Border_Normal}"/>
+        </Rectangle.Stroke>
+        <Rectangle.Fill>
+          <SolidColorBrush x:Name="rectangleCommonsFill" Color="{StaticResource Color_Background_Normal}"/>
+        </Rectangle.Fill>
+      </Rectangle>
+      
+      <Rectangle x:Name="rectangleFocus"
+                 Opacity="0" RadiusX="3" RadiusY="3"
+                 StrokeThickness="{TemplateBinding BorderThickness}"
+                 Stroke="{StaticResource Brush_Border_Focused}"
+                 Fill="{StaticResource Brush_Background_Focused}"/>
+
+      <Rectangle x:Name="rectangleInvalid"
+                 Opacity="0" RadiusX="3" RadiusY="3"
+                 StrokeThickness="{TemplateBinding BorderThickness}"
+                 Stroke="{StaticResource Brush_Border_InvalidFocused}"
+                 Fill="{StaticResource Brush_Background_InvalidFocused}"/>
+      
+      <ContentPresenter x:Name="ContentPresenter" 
+                        Margin="{TemplateBinding Padding}"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" 
+                        Content="{TemplateBinding Content}" 
+                        ContentTemplate="{TemplateBinding ContentTemplate}" 
+                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" 
+                        Opacity="1" Height="Auto"/>
+    </Grid>
+    <ControlTemplate.Triggers>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  
+  <Style TargetType="RepeatButton">
+    <Setter Property="SnapsToDevicePixels" Value="True"/>
+    <Setter Property="OverridesDefaultStyle" Value="True"/>
+    <Setter Property="Focusable" Value="True"/>
+    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    <Setter Property="Background" Value="{StaticResource Brush_Background_Normal}"/>
+    <Setter Property="Foreground" Value="{StaticResource Brush_Foreground_Normal}"/>
+    <Setter Property="BorderBrush" Value="{StaticResource Brush_Border_Normal}"/>
+    <Setter Property="HorizontalAlignment" Value="Center"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="Padding" Value="4,1"/>
+    <Setter Property="Template" Value="{StaticResource RepeatButtonControlTemplate}"/>
+    <Style.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Foreground" Value="{StaticResource Brush_Foreground_MouseOver}"/>
+      </Trigger>
+      <Trigger Property="IsEnabled" Value="False">
+        <Setter Property="Foreground" Value="{StaticResource Brush_Foreground_Disable}"/>
+      </Trigger>
+      <Trigger Property="IsPressed" Value="True">
+        <Setter Property="Foreground" Value="{StaticResource Brush_Foreground_Pressed}"/>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
+</ResourceDictionary>

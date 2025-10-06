@@ -1,0 +1,36 @@
+﻿<Window x:Class="CalendarDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalendarDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1450" Width="1800" Background="Black">
+  <Window.Resources>
+  </Window.Resources>
+  <Grid Width="800" Height="200">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Column="0" Grid.Row="0" Text="Start Date" Foreground="White" FontSize="20" Margin="8,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+    <Viewbox Width="300" Margin="3" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+      <DatePicker Width="200"
+                    Style="{StaticResource DatePickerStyleNew}"
+                    CalendarStyle="{StaticResource CalendarStyle}"/>
+    </Viewbox>
+
+    <TextBlock Grid.Column="1" Grid.Row="0" Text="End Date" Foreground="White" FontSize="20" Margin="8,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+    <Viewbox Width="300" Margin="3" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+      <DatePicker Width="200"
+                  Style="{StaticResource DatePickerStyleNew}"
+                  CalendarStyle="{StaticResource CalendarStyle}"/>
+    </Viewbox>
+
+  </Grid>
+
+</Window>

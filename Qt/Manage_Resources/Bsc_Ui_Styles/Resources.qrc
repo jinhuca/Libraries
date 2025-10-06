@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>fonts/urbanist/Urbanist-Italic-VariableFont_wght.ttf</file>
+        <file>fonts/urbanist/Urbanist-VariableFont_wght.ttf</file>
+        <file>images/icon_flex.svg</file>
+        <file>images/icon_flower.svg</file>
+        <file>images/icon_tip.svg</file>
+        <file>images/icon-basket.svg</file>
+        <file>images/Icons.qml</file>
+        <file>fonts/Fonts.qml</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\35FLOPPY.BMP" />
+    <None Remove="Images\CDDRIVE.BMP" />
+    <None Remove="Images\CLSDFOLD.BMP" />
+    <None Remove="Images\DRIVE.bmp" />
+    <None Remove="Images\OPENFOLD.BMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\35FLOPPY.BMP" />
+    <Resource Include="Images\CDDRIVE.BMP" />
+    <Resource Include="Images\CLSDFOLD.BMP" />
+    <Resource Include="Images\DRIVE.bmp" />
+    <Resource Include="Images\OPENFOLD.BMP" />
+  </ItemGroup>
+
+</Project>

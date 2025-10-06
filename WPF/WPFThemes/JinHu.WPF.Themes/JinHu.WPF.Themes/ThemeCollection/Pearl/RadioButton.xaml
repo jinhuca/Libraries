@@ -1,0 +1,200 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Shared.xaml"/>
+  </ResourceDictionary.MergedDictionaries>
+
+  <ControlTemplate x:Key="RadioButtonTemplate" TargetType="RadioButton">
+    <ControlTemplate.Resources>
+      <Storyboard x:Key="Hovering">
+        <ColorAnimation Storyboard.TargetName="bulletDecoratorBackground"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Background_MouseOver}" 
+                        Duration="0"/>
+        <ColorAnimation Storyboard.TargetName="ellipseBulletBackgroundStrokeBrush"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Border_MouseOver}"
+                        Duration="0"/>
+        <!--<DoubleAnimation Storyboard.TargetName="ellipseBulletBackground"
+                         Storyboard.TargetProperty="StrokeThickness"
+                         To="1.2" Duration="0"/>-->
+        <ColorAnimation Storyboard.TargetName="ellipseBulletBackgroundBrush"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Background_MouseOver}" 
+                        Duration="0"/>
+      </Storyboard>
+      <Storyboard x:Key="Pressing">
+        <ColorAnimation Storyboard.TargetName="ellipseBulletBackgroundStrokeBrush"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Border_Pressed}"
+                        Duration="0"/>
+        <ColorAnimation Storyboard.TargetName="ellipseBulletBackgroundBrush"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Background_Pressed}"
+                        Duration="0"/>
+      </Storyboard>
+      <Storyboard x:Key="Disabling">
+        <ColorAnimation Storyboard.TargetName="bulletDecoratorBackground"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Background_Disable}"
+                        Duration="0"/>
+        <ColorAnimation Storyboard.TargetName="ellipseBulletBackgroundBrush"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Background_Disable}"
+                        Duration="0"/>
+        <ColorAnimation Storyboard.TargetName="ellipseBulletBackgroundStrokeBrush"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Border_Disable}"
+                        Duration="0"/>
+      </Storyboard>
+      <Storyboard x:Key="Checking">
+        <DoubleAnimation Storyboard.TargetName="ellipseBulletCheckIcon"
+                         Storyboard.TargetProperty="Opacity"
+                         To="1" Duration="0"/>
+        <!--<ColorAnimation Storyboard.TargetName="bulletDecoratorBackground"
+                        Storyboard.TargetProperty="Color"
+                        To="{DynamicResource Color_Background_Checked}"
+                        Duration="0"/>-->
+      </Storyboard>
+      <Storyboard x:Key="CheckingOff">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipseBulletCheckIcon" 
+                                       Storyboard.TargetProperty="Opacity">
+          <SplineDoubleKeyFrame KeyTime="0" Value="0"/>
+        </DoubleAnimationUsingKeyFrames>
+      </Storyboard>
+
+      <Storyboard x:Key="Indetermining">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipseBulletIndetermination"
+                                       Storyboard.TargetProperty="(UIElement.Opacity)">
+          <SplineDoubleKeyFrame KeyTime="0" Value="1"/>
+        </DoubleAnimationUsingKeyFrames>
+      </Storyboard>
+
+      <Storyboard x:Key="Focussing">
+        <ColorAnimation Storyboard.TargetName="bulletDecoratorBackground"
+                        Storyboard.TargetProperty="Color"
+                        To="{StaticResource Color_Background_Focused}" Duration="0"/>
+        <DoubleAnimation Storyboard.TargetName="ellipseBulletFocus" 
+                         Storyboard.TargetProperty="Opacity"
+                         To="1" Duration="0"/>
+      </Storyboard>
+      <Storyboard x:Key="FocussingOff">
+        <ColorAnimation Storyboard.TargetName="bulletDecoratorBackground"
+                        Storyboard.TargetProperty="Color"
+                        To="Transparent" Duration="0"/>
+        <DoubleAnimation Storyboard.TargetName="ellipseBulletFocus" 
+                         Storyboard.TargetProperty="Opacity"
+                         To="0" Duration="0"/>
+      </Storyboard>
+      
+      <Storyboard x:Key="InvalidingFocused">
+        <DoubleAnimation Storyboard.TargetName="ellipseBulletInvalid"
+                         Storyboard.TargetProperty="Opacity"
+                         To="1" Duration="0"/>
+        <DoubleAnimation Storyboard.TargetName="ellipseBulletBackground"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0" Duration="0"/>
+        <DoubleAnimation Storyboard.TargetName="gridContent"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0.3" Duration="0"/>
+      </Storyboard>
+
+      <Storyboard x:Key="InvalidingUnfocused">
+        <DoubleAnimation Storyboard.TargetName="ellipseBulletInvalid"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0.5" Duration="0"/>
+        <DoubleAnimation Storyboard.TargetName="ellipseBulletBackground"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0" Duration="0"/>
+        <DoubleAnimation Storyboard.TargetName="gridContent"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0.3" Duration="0"/>
+      </Storyboard>
+      
+    </ControlTemplate.Resources>
+    <BulletDecorator x:Name="bulletDecorator">
+      <BulletDecorator.Background>
+        <SolidColorBrush x:Name="bulletDecoratorBackground" Color="Transparent"/>
+      </BulletDecorator.Background>
+      <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="CommonStates">
+          <VisualState x:Name="Normal"/>
+          <VisualState x:Name="MouseOver" Storyboard="{StaticResource Hovering}"/>
+          <VisualState x:Name="Pressed" Storyboard="{StaticResource Pressing}"/>
+          <VisualState x:Name="Disabled" Storyboard="{StaticResource Disabling}"/>
+        </VisualStateGroup>
+        <VisualStateGroup x:Name="FocusStates">
+          <VisualState x:Name="Focused" Storyboard="{StaticResource Focussing}"/>
+          <VisualState x:Name="Unfocused" Storyboard="{StaticResource FocussingOff}"/>
+        </VisualStateGroup>
+        <VisualStateGroup x:Name="CheckStates">
+          <VisualState x:Name="Checked" Storyboard="{StaticResource Checking}"/>
+          <VisualState x:Name="Unchecked" Storyboard="{StaticResource CheckingOff}"/>
+          <VisualState x:Name="Indeterminate" Storyboard="{StaticResource Indetermining}"/>
+        </VisualStateGroup>
+        <VisualStateGroup x:Name="ValidationStates">
+          <VisualState x:Name="Valid"/>
+          <VisualState x:Name="InvalidFocused" Storyboard="{StaticResource InvalidingFocused}"/>
+          <VisualState x:Name="InvalidUnfocused" Storyboard="{StaticResource InvalidingUnfocused}"/>
+        </VisualStateGroup>
+      </VisualStateManager.VisualStateGroups>
+      <BulletDecorator.Bullet>
+        <Grid Width="15" Height="15" VerticalAlignment="Center">
+          <Ellipse x:Name="ellipseBulletBackground" Height="14" Width="14" StrokeThickness="1">
+            <Ellipse.Fill>
+              <SolidColorBrush x:Name="ellipseBulletBackgroundBrush" Color="{StaticResource Color_Background_Normal}"/>
+            </Ellipse.Fill>
+            <Ellipse.Stroke>
+              <SolidColorBrush x:Name="ellipseBulletBackgroundStrokeBrush" Color="{StaticResource Color_Border_Normal}"/>
+            </Ellipse.Stroke>
+          </Ellipse>
+          <Ellipse x:Name="ellipseBulletCheckIcon" Height="9" Width="9" Opacity="0" 
+                   Fill="{StaticResource Brush_Foreground_Normal}"/>
+          <Ellipse x:Name="ellipseBulletFocus" Height="14" Width="14" 
+                   IsHitTestVisible="false" Opacity="0" 
+                   Stroke="{StaticResource Brush_Border_Focused}" StrokeThickness="1.5"/>
+          <Ellipse x:Name="ellipseBulletIndetermination" Height="10" Width="10" Opacity="0"
+                   StrokeThickness="{TemplateBinding BorderThickness}" 
+                   Stroke="{x:Null}" Fill="{StaticResource Brush_Background_Indeterminate}"/>
+          <Ellipse x:Name="ellipseBulletInvalid" Height="14" Width="14"
+                   Opacity="0" IsHitTestVisible="False"
+                   Fill="{StaticResource Brush_Background_InvalidFocused}"
+                   Stroke="{StaticResource Brush_Border_InvalidFocused}"
+                   StrokeThickness="1"/>
+        </Grid>
+      </BulletDecorator.Bullet>
+      <Grid x:Name="gridContent" Height="15" HorizontalAlignment="Left" 
+            VerticalAlignment="Center"
+            Background="Transparent">
+        <Rectangle x:Name="rectangleContentBackground" Height="15" Opacity="0" Margin="1,0,0,0">
+          <Rectangle.Fill>
+            <SolidColorBrush x:Name="rectContentBackgroundBrush" Color="{StaticResource Color_Background_Normal}"/>
+          </Rectangle.Fill>
+        </Rectangle>
+        <ContentPresenter RecognizesAccessKey="True" Margin="5,0,0,0"/>
+      </Grid>
+    </BulletDecorator>
+  </ControlTemplate>
+
+  <Style TargetType="{x:Type RadioButton}">
+    <Setter Property="SnapsToDevicePixels" Value="True"/>
+    <Setter Property="Focusable" Value="True"/>
+    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    <Setter Property="Background" Value="{StaticResource Brush_Background_Normal}"/>
+    <Setter Property="Foreground" Value="{StaticResource Brush_Foreground_Normal}"/>
+    <Setter Property="BorderBrush" Value="{StaticResource Brush_Border_Normal}"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="Template" Value="{StaticResource RadioButtonTemplate}"/>
+    <Style.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Foreground" Value="{StaticResource Brush_Foreground_MouseOver}"/>
+      </Trigger>
+      <!--<Trigger Property="IsChecked" Value="True">
+        <Setter Property="Foreground" Value="{StaticResource Brush_Foreground_Checked}"/>
+      </Trigger>-->
+      <Trigger Property="IsEnabled" Value="False">
+        <Setter Property="Foreground" Value="{StaticResource Brush_Foreground_Disable}"/>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+</ResourceDictionary>

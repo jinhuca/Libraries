@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1701PrintEllipse", "C1701PrintEllipse\C1701PrintEllipse.csproj", "{173231E5-0F8E-4193-A3DB-C92764CD341D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1702PrintWithMargins", "C1702PrintWithMargins\C1702PrintWithMargins.csproj", "{E4D5BEC5-B901-469F-AF53-1C05321C9D93}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1703PrintaBunchaButtons", "C1703PrintaBunchaButtons\C1703PrintaBunchaButtons.csproj", "{F2288401-7A88-4FC3-900D-18B483C46F07}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1704PrintBanner", "C1704PrintBanner\C1704PrintBanner.csproj", "{11BB6431-B695-482D-B88E-AB3EA065EA46}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1705PrintBetterBanner", "C1705PrintBetterBanner\C1705PrintBetterBanner.csproj", "{59E353FF-F47C-4146-93E6-A95C961E872D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1706ChooseFont", "C1706ChooseFont\C1706ChooseFont.csproj", "{F89DC0D0-9C5F-4808-A493-5FE81AF238FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{173231E5-0F8E-4193-A3DB-C92764CD341D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{173231E5-0F8E-4193-A3DB-C92764CD341D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{173231E5-0F8E-4193-A3DB-C92764CD341D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{173231E5-0F8E-4193-A3DB-C92764CD341D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4D5BEC5-B901-469F-AF53-1C05321C9D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4D5BEC5-B901-469F-AF53-1C05321C9D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4D5BEC5-B901-469F-AF53-1C05321C9D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4D5BEC5-B901-469F-AF53-1C05321C9D93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2288401-7A88-4FC3-900D-18B483C46F07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2288401-7A88-4FC3-900D-18B483C46F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2288401-7A88-4FC3-900D-18B483C46F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2288401-7A88-4FC3-900D-18B483C46F07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11BB6431-B695-482D-B88E-AB3EA065EA46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11BB6431-B695-482D-B88E-AB3EA065EA46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11BB6431-B695-482D-B88E-AB3EA065EA46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11BB6431-B695-482D-B88E-AB3EA065EA46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59E353FF-F47C-4146-93E6-A95C961E872D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59E353FF-F47C-4146-93E6-A95C961E872D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59E353FF-F47C-4146-93E6-A95C961E872D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59E353FF-F47C-4146-93E6-A95C961E872D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F89DC0D0-9C5F-4808-A493-5FE81AF238FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F89DC0D0-9C5F-4808-A493-5FE81AF238FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F89DC0D0-9C5F-4808-A493-5FE81AF238FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F89DC0D0-9C5F-4808-A493-5FE81AF238FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C7BC631-AC21-4C38-9C54-9CD2066A6343}
+	EndGlobalSection
+EndGlobal
