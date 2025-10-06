@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SineWave", "SineWave.vcxproj", "{DC8CF3F8-4F12-4F72-8A09-C95B72C9A825}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC8CF3F8-4F12-4F72-8A09-C95B72C9A825}.Debug|x86.ActiveCfg = Debug|Win32
+		{DC8CF3F8-4F12-4F72-8A09-C95B72C9A825}.Debug|x86.Build.0 = Debug|Win32
+		{DC8CF3F8-4F12-4F72-8A09-C95B72C9A825}.Release|x86.ActiveCfg = Release|Win32
+		{DC8CF3F8-4F12-4F72-8A09-C95B72C9A825}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7DCE6E2-7071-48E7-BA15-A83D40654192}
+	EndGlobalSection
+EndGlobal

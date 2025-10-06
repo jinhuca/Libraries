@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C1201_ClipText", "C1201_ClipText\ClipText.vcxproj", "{247C6EF7-717A-4478-88F4-05FB3DE40425}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C1202_ClipView", "C1202_ClipView\C1202_ClipView.vcxproj", "{BCDA41EB-E2A7-46D8-99A4-D10437819F3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{247C6EF7-717A-4478-88F4-05FB3DE40425}.Debug|x86.ActiveCfg = Debug|Win32
+		{247C6EF7-717A-4478-88F4-05FB3DE40425}.Debug|x86.Build.0 = Debug|Win32
+		{247C6EF7-717A-4478-88F4-05FB3DE40425}.Release|x86.ActiveCfg = Release|Win32
+		{247C6EF7-717A-4478-88F4-05FB3DE40425}.Release|x86.Build.0 = Release|Win32
+		{BCDA41EB-E2A7-46D8-99A4-D10437819F3D}.Debug|x86.ActiveCfg = Debug|Win32
+		{BCDA41EB-E2A7-46D8-99A4-D10437819F3D}.Debug|x86.Build.0 = Debug|Win32
+		{BCDA41EB-E2A7-46D8-99A4-D10437819F3D}.Release|x86.ActiveCfg = Release|Win32
+		{BCDA41EB-E2A7-46D8-99A4-D10437819F3D}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D185AC09-F73B-4803-956D-11E612511599}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bricks1", "Bricks1.vcxproj", "{CC53D29C-7C0B-4CB6-B3A1-090603FDE69D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC53D29C-7C0B-4CB6-B3A1-090603FDE69D}.Debug|x86.ActiveCfg = Debug|Win32
+		{CC53D29C-7C0B-4CB6-B3A1-090603FDE69D}.Debug|x86.Build.0 = Debug|Win32
+		{CC53D29C-7C0B-4CB6-B3A1-090603FDE69D}.Release|x86.ActiveCfg = Release|Win32
+		{CC53D29C-7C0B-4CB6-B3A1-090603FDE69D}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA41E63E-5CBE-4A69-9158-30551C42AB7B}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C0101_HelloMsg", "C0101_HelloMsg\C0101_HelloMsg.vcxproj", "{C2C12ADA-A7BF-4FB6-8E51-70D8D55B7842}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2C12ADA-A7BF-4FB6-8E51-70D8D55B7842}.Debug|x86.ActiveCfg = Debug|Win32
+		{C2C12ADA-A7BF-4FB6-8E51-70D8D55B7842}.Debug|x86.Build.0 = Debug|Win32
+		{C2C12ADA-A7BF-4FB6-8E51-70D8D55B7842}.Release|x86.ActiveCfg = Release|Win32
+		{C2C12ADA-A7BF-4FB6-8E51-70D8D55B7842}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCD562CA-2602-4A63-A3D8-79F911E00858}
+	EndGlobalSection
+EndGlobal
