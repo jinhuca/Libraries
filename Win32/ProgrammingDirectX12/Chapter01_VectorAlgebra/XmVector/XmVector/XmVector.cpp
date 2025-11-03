@@ -10,8 +10,7 @@ using namespace DirectX;
 using namespace DirectX::PackedVector;
 
 // overload the "<<" operators so that we can cout to output XMVECTOR objects.
-std::ostream& XM_CALLCONV operator <<(std::ostream& os, DirectX::FXMVECTOR v)
-{
+std::ostream& XM_CALLCONV operator <<(std::ostream& os, DirectX::FXMVECTOR v) {
   DirectX::XMFLOAT3 dest;
   DirectX::XMStoreFloat3(&dest, v);
 
@@ -19,13 +18,11 @@ std::ostream& XM_CALLCONV operator <<(std::ostream& os, DirectX::FXMVECTOR v)
   return os;
 }
 
-int main()
-{
+int main() {
   std::cout.setf(std::ios_base::boolalpha);
 
   // Check support for SSE2 (Pentium4, AMD K8, and above).
-  if(!DirectX::XMVerifyCPUSupport())
-  {
+  if(!DirectX::XMVerifyCPUSupport()) {
     std::cout << "directx math not supported." << std::endl;
     return 0;
   }

@@ -12,10 +12,8 @@ std::ostream& XM_CALLCONV operator<<(std::ostream& os, DirectX::FXMVECTOR v) {
   return os;
 }
 
-std::ostream& XM_CALLCONV operator << (std::ostream& os, DirectX::FXMMATRIX m)
-{
-  for (int i = 0; i < 4; ++i)
-  {
+std::ostream& XM_CALLCONV operator << (std::ostream& os, DirectX::FXMMATRIX m) {
+  for(int i = 0; i < 4; ++i) {
     os << DirectX::XMVectorGetX(m.r[i]) << "\t";
     os << DirectX::XMVectorGetY(m.r[i]) << "\t";
     os << DirectX::XMVectorGetZ(m.r[i]) << "\t";
@@ -25,10 +23,9 @@ std::ostream& XM_CALLCONV operator << (std::ostream& os, DirectX::FXMMATRIX m)
   return os;
 }
 
-int main()
-{
+int main() {
   // Check support for SSE2 (Pentium, AMD)
-  if (!DirectX::XMVerifyCPUSupport()) {
+  if(!DirectX::XMVerifyCPUSupport()) {
     std::cout << "directx math not supported.\n";
     return 0;
   }

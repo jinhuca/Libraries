@@ -16,19 +16,16 @@ using Microsoft::WRL::ComPtr;
 using namespace DirectX;
 using namespace DirectX::PackedVector;
 
-struct Vertex
-{
+struct Vertex {
   XMFLOAT3 Pos;
   XMFLOAT4 Color;
 };
 
-struct ObjectConstants
-{
+struct ObjectConstants {
   XMFLOAT4X4 WorldViewProj = MathHelper::Identity4x4();
 };
 
-class BoxApp : public D3DApp
-{
+class BoxApp : public D3DApp {
 public:
   BoxApp(HINSTANCE hInstance);
   BoxApp(const BoxApp& rhs) = delete;
@@ -80,40 +77,34 @@ private:
 };
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,
-  PSTR cmdLine, int showCmd)
-{
+  PSTR cmdLine, int showCmd) {
   // Enable run-time memory check for debug builds.
 #if defined(DEBUG) | defined(_DEBUG)
   _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
 
-  try
-  {
+  try {
     BoxApp theApp(hInstance);
-    if (!theApp.Initialize())
+    if(!theApp.Initialize())
       return 0;
 
     return theApp.Run();
   }
-  catch (DxException& e)
-  {
+  catch(DxException& e) {
     MessageBox(nullptr, e.ToString().c_str(), L"HR Failed", MB_OK);
     return 0;
   }
 }
 
 BoxApp::BoxApp(HINSTANCE hInstance)
-  : D3DApp(hInstance)
-{
+  : D3DApp(hInstance) {
 }
 
-BoxApp::~BoxApp()
-{
+BoxApp::~BoxApp() {
 }
 
-bool BoxApp::Initialize()
-{
-  if (!D3DApp::Initialize())
+bool BoxApp::Initialize() {
+  if(!D3DApp::Initialize())
     return false;
 
   // Reset the command list to prep for initialization commands.
@@ -128,7 +119,7 @@ bool BoxApp::Initialize()
 
   // Execute the initialization commands.
   ThrowIfFailed(mCommandList->Close());
-  ID3D12CommandList* cmdsLists [] = { mCommandList.Get() };
+  ID3D12CommandList* cmdsLists[] = {mCommandList.Get()};
   mCommandQueue->ExecuteCommandLists(_countof(cmdsLists), cmdsLists);
 
   // Wait until initialization is complete.
@@ -137,8 +128,7 @@ bool BoxApp::Initialize()
   return true;
 }
 
-void BoxApp::OnResize()
-{
+void BoxApp::OnResize() {
   D3DApp::OnResize();
 
   // The window resized, so update the aspect ratio and recompute the projection matrix.
@@ -146,8 +136,7 @@ void BoxApp::OnResize()
   XMStoreFloat4x4(&mProj, P);
 }
 
-void BoxApp::Update(const GameTimer& gt)
-{
+void BoxApp::Update(const GameTimer& gt) {
   // Convert Spherical to Cartesian coordinates.
   float x = mRadius * sinf(mPhi) * cosf(mTheta);
   float z = mRadius * sinf(mPhi) * sinf(mTheta);
@@ -171,8 +160,7 @@ void BoxApp::Update(const GameTimer& gt)
   mObjectCB->CopyData(0, objConstants);
 }
 
-void BoxApp::Draw(const GameTimer& gt)
-{
+void BoxApp::Draw(const GameTimer& gt) {
   // Reuse the memory associated with command recording.
   // We can only reset when the associated command lists have finished execution on the GPU.
   ThrowIfFailed(mDirectCmdListAlloc->Reset());
@@ -195,7 +183,7 @@ void BoxApp::Draw(const GameTimer& gt)
   // Specify the buffers we are going to render to.
   mCommandList->OMSetRenderTargets(1, &CurrentBackBufferView(), true, &DepthStencilView());
 
-  ID3D12DescriptorHeap* descriptorHeaps [] = { mCbvHeap.Get() };
+  ID3D12DescriptorHeap* descriptorHeaps[] = {mCbvHeap.Get()};
   mCommandList->SetDescriptorHeaps(_countof(descriptorHeaps), descriptorHeaps);
 
   mCommandList->SetGraphicsRootSignature(mRootSignature.Get());
@@ -218,7 +206,7 @@ void BoxApp::Draw(const GameTimer& gt)
   ThrowIfFailed(mCommandList->Close());
 
   // Add the command list to the queue for execution.
-  ID3D12CommandList* cmdsLists [] = { mCommandList.Get() };
+  ID3D12CommandList* cmdsLists[] = {mCommandList.Get()};
   mCommandQueue->ExecuteCommandLists(_countof(cmdsLists), cmdsLists);
 
   // swap the back and front buffers
@@ -231,23 +219,19 @@ void BoxApp::Draw(const GameTimer& gt)
   FlushCommandQueue();
 }
 
-void BoxApp::OnMouseDown(WPARAM btnState, int x, int y)
-{
+void BoxApp::OnMouseDown(WPARAM btnState, int x, int y) {
   mLastMousePos.x = x;
   mLastMousePos.y = y;
 
   SetCapture(mhMainWnd);
 }
 
-void BoxApp::OnMouseUp(WPARAM btnState, int x, int y)
-{
+void BoxApp::OnMouseUp(WPARAM btnState, int x, int y) {
   ReleaseCapture();
 }
 
-void BoxApp::OnMouseMove(WPARAM btnState, int x, int y)
-{
-  if ((btnState & MK_LBUTTON) != 0)
-  {
+void BoxApp::OnMouseMove(WPARAM btnState, int x, int y) {
+  if((btnState & MK_LBUTTON) != 0) {
     // Make each pixel correspond to a quarter of a degree.
     float dx = XMConvertToRadians(0.25f * static_cast<float>(x - mLastMousePos.x));
     float dy = XMConvertToRadians(0.25f * static_cast<float>(y - mLastMousePos.y));
@@ -259,8 +243,7 @@ void BoxApp::OnMouseMove(WPARAM btnState, int x, int y)
     // Restrict the angle mPhi.
     mPhi = MathHelper::Clamp(mPhi, 0.1f, MathHelper::Pi - 0.1f);
   }
-  else if ((btnState & MK_RBUTTON) != 0)
-  {
+  else if((btnState & MK_RBUTTON) != 0) {
     // Make each pixel correspond to 0.005 unit in the scene.
     float dx = 0.005f * static_cast<float>(x - mLastMousePos.x);
     float dy = 0.005f * static_cast<float>(y - mLastMousePos.y);
@@ -276,8 +259,7 @@ void BoxApp::OnMouseMove(WPARAM btnState, int x, int y)
   mLastMousePos.y = y;
 }
 
-void BoxApp::BuildDescriptorHeaps()
-{
+void BoxApp::BuildDescriptorHeaps() {
   D3D12_DESCRIPTOR_HEAP_DESC cbvHeapDesc;
   cbvHeapDesc.NumDescriptors = 1;
   cbvHeapDesc.Type = D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV;
@@ -287,8 +269,7 @@ void BoxApp::BuildDescriptorHeaps()
     IID_PPV_ARGS(&mCbvHeap)));
 }
 
-void BoxApp::BuildConstantBuffers()
-{
+void BoxApp::BuildConstantBuffers() {
   mObjectCB = std::make_unique<UploadBuffer<ObjectConstants>>(md3dDevice.Get(), 1, true);
 
   UINT objCBByteSize = d3dUtil::CalcConstantBufferByteSize(sizeof(ObjectConstants));
@@ -307,8 +288,7 @@ void BoxApp::BuildConstantBuffers()
     mCbvHeap->GetCPUDescriptorHandleForHeapStart());
 }
 
-void BoxApp::BuildRootSignature()
-{
+void BoxApp::BuildRootSignature() {
   // Shader programs typically require resources as input (constant buffers,
   // textures, samplers).  The root signature defines the resources the shader
   // programs expect.  If we think of the shader programs as a function, and
@@ -333,9 +313,8 @@ void BoxApp::BuildRootSignature()
   HRESULT hr = D3D12SerializeRootSignature(&rootSigDesc, D3D_ROOT_SIGNATURE_VERSION_1,
     serializedRootSig.GetAddressOf(), errorBlob.GetAddressOf());
 
-  if (errorBlob != nullptr)
-  {
-    ::OutputDebugStringA((char*)errorBlob->GetBufferPointer());
+  if(errorBlob != nullptr) {
+    ::OutputDebugStringA((char*) errorBlob->GetBufferPointer());
   }
   ThrowIfFailed(hr);
 
@@ -346,8 +325,7 @@ void BoxApp::BuildRootSignature()
     IID_PPV_ARGS(&mRootSignature)));
 }
 
-void BoxApp::BuildShadersAndInputLayout()
-{
+void BoxApp::BuildShadersAndInputLayout() {
   HRESULT hr = S_OK;
 
   mvsByteCode = d3dUtil::CompileShader(L"Shaders\\color.hlsl", nullptr, "VS", "vs_5_0");
@@ -360,8 +338,7 @@ void BoxApp::BuildShadersAndInputLayout()
   };
 }
 
-void BoxApp::BuildBoxGeometry()
-{
+void BoxApp::BuildBoxGeometry() {
   std::array<Vertex, 8> vertices =
   {
       Vertex({ XMFLOAT3(-1.0f, -1.0f, -1.0f), XMFLOAT4(Colors::White) }),
@@ -401,8 +378,8 @@ void BoxApp::BuildBoxGeometry()
     4, 3, 7
   };
 
-  const UINT vbByteSize = (UINT)vertices.size() * sizeof(Vertex);
-  const UINT ibByteSize = (UINT)indices.size() * sizeof(std::uint16_t);
+  const UINT vbByteSize = (UINT) vertices.size() * sizeof(Vertex);
+  const UINT ibByteSize = (UINT) indices.size() * sizeof(std::uint16_t);
 
   mBoxGeo = std::make_unique<MeshGeometry>();
   mBoxGeo->Name = "boxGeo";
@@ -425,18 +402,17 @@ void BoxApp::BuildBoxGeometry()
   mBoxGeo->IndexBufferByteSize = ibByteSize;
 
   SubmeshGeometry submesh;
-  submesh.IndexCount = (UINT)indices.size();
+  submesh.IndexCount = (UINT) indices.size();
   submesh.StartIndexLocation = 0;
   submesh.BaseVertexLocation = 0;
 
   mBoxGeo->DrawArgs["box"] = submesh;
 }
 
-void BoxApp::BuildPSO()
-{
+void BoxApp::BuildPSO() {
   D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc;
   ZeroMemory(&psoDesc, sizeof(D3D12_GRAPHICS_PIPELINE_STATE_DESC));
-  psoDesc.InputLayout = { mInputLayout.data(), (UINT)mInputLayout.size() };
+  psoDesc.InputLayout = {mInputLayout.data(), (UINT) mInputLayout.size()};
   psoDesc.pRootSignature = mRootSignature.Get();
   psoDesc.VS =
   {
