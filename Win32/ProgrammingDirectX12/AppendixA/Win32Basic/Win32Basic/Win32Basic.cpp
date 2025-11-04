@@ -27,7 +27,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pCmdLine, 
   // First call our wrapper function (InitWindowsApp) to create and
   // initialize the main application window, passing in the hInstance and nShowCmd 
   // values as arguments
-  if (!InitWindowsApp(hInstance, nShowCmd)) {
+  if(!InitWindowsApp(hInstance, nShowCmd)) {
     return 0;
   }
 
