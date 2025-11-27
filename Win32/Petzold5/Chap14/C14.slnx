@@ -1,0 +1,17 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="C1401_BitBlt/C1401_BitBlt.vcxproj" Id="44ca592a-0597-4252-b476-56c6beb7cd2d" />
+  <Project Path="C1402_Stretch/C1402_Stretch.vcxproj" Id="2c1a6a4e-205f-420c-b3b0-99caa35b44a9" />
+  <Project Path="C1403_Bricks1/C1403_Bricks1.vcxproj" Id="cc53d29c-7c0b-4cb6-b3a1-090603fde69d" />
+  <Project Path="C1404_Bricks2/C1404_Bricks2.vcxproj" Id="ad3cf28a-30c0-4558-b44c-4aece1086f60" />
+  <Project Path="C1405_Bricks3/C1405_Bricks3.vcxproj" Id="cbf3864c-8438-42f7-b71e-ab221394e225" />
+  <Project Path="C1406_HelloBit/C1406_HelloBit.vcxproj" Id="327f5641-c3fc-4b83-a77a-1ce965b1385a" />
+  <Project Path="C1407_Sketch/C1407_Sketch.vcxproj" Id="c0eb92bf-4bb1-44b9-85c5-890b5a68b15e" />
+  <Project Path="C1408_GrafMenu/C1408_GrafMenu.vcxproj" Id="f21bebca-f390-412a-afef-f56857ea4739" />
+  <Project Path="C1409_BitMask/C1409_BitMask.vcxproj" Id="6a9e4772-a1de-4759-9419-2caf403e3516" />
+  <Project Path="C1410_Bounce/C1410_Bounce.vcxproj" Id="d0b1b875-285d-41b8-9b6e-d731809e34a4" />
+  <Project Path="C1411_Scramble/C1411_Scramble.vcxproj" Id="fe7b7780-4e84-4cb9-a4ab-48d7bde1b3a8" />
+  <Project Path="C1412_Blowup/C1412_Blowup.vcxproj" Id="5701d529-218f-4d61-9af5-42325fc66f8b" />
+</Solution>
